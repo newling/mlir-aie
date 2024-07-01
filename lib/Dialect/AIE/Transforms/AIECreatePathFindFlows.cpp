@@ -75,10 +75,6 @@ struct ConvertFlowsToInterconnect : OpConversionPattern<FlowOp> {
     auto srcChannel = flowOp.getSourceChannel();
     Port srcPort = {srcBundle, srcChannel};
 
-    auto dstTile = cast<TileOp>(flowOp.getDest().getDefiningOp());
-    auto dstBundle = flowOp.getDestBundle();
-    auto dstChannel = flowOp.getDestChannel();
-
     if (keepFlowOp) {
       auto *clonedOp = Op->clone();
       flowOps.push_back(clonedOp);
